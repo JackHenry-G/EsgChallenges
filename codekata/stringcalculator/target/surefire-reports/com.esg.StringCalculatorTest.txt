@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.esg.StringCalculatorTest
+-------------------------------------------------------------------------------
+Tests run: 2, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 0.018 s <<< FAILURE! - in com.esg.StringCalculatorTest
+testAdditionWithEmptyString(com.esg.StringCalculatorTest)  Time elapsed: 0.004 s  <<< FAILURE!
+java.lang.AssertionError: expected:<0> but was:<>
+	at com.esg.StringCalculatorTest.testAdditionWithEmptyString(StringCalculatorTest.java:16)
+
