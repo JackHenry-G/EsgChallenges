@@ -4,10 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.http.HttpResponse;
 
-/**
- * Hello world!
- *
- */
 public class App {
     public static void main(String[] args) {
         try {

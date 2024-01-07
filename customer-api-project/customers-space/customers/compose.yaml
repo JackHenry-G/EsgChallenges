@@ -6,9 +6,23 @@ services:
     image: postgres
     container_name: esg-psql-db
     restart: always # if container fails, start up again. Ensures data is always accessible
-    environment: # application.properties will pick this up
+    environment:
       - POSTGRES_USER=esgtestuser
       - POSTGRES_PASSWORD=testpwd
       - POSTGRES_DB=esgcustomers
     ports:
       - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  springbootapp:
+    build:
+      context: . # Specify the path to your Spring Boot app directory
+      dockerfile: dockerfile # Specify the name of your Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - esg-psql-db
+
+volumes:
+  postgres_data:

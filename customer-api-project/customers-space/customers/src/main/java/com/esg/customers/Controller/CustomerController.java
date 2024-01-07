@@ -25,6 +25,11 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    /**
+     * Retrieves all customers from the database.
+     * 
+     * @return ResponseEntity<List<Customer>> - a list of JSON customer objects.
+     */
     @GetMapping
     public ResponseEntity<List<Customer>> getAllCustomers() {
         List<Customer> customers = customerService.getAllCustomers();
@@ -36,6 +41,12 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Allows clients to save a list of customer records into the database.
+     * 
+     * @param customerDetails - json data following the specified customer object.
+     * @return ResponseEntity<List<Customer>> - the list of newly created customers.
+     */
     @PostMapping
     public ResponseEntity<List<Customer>> saveCustomers(@RequestBody List<Customer> customerDetails) {
         List<Customer> customers = customerService.saveAllCustomers(customerDetails);
@@ -47,6 +58,12 @@ public class CustomerController {
         }
     }
 
+    /**
+     * Gets the one, unqiue, specified custoemr object by the reference number.
+     * 
+     * @param customerRef - unique ID for the customer.
+     * @return ResponseEntity<Customer> - one single customer JSON object.
+     */
     @GetMapping("/{customerRef}")
     public ResponseEntity<Customer> getCustomerByRef(@PathVariable String customerRef) {
         Optional<Customer> customer = customerService.getCustomerByRef(customerRef);
