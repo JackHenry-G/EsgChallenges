@@ -14,7 +14,7 @@ public class App {
             // get customer details as JSON from csv file
             CsvProcessor<Customer> csvProcessor = new CsvProcessor<Customer>();
             String customerDetails = csvProcessor.parseCsvToJson("csvreader/customer_details.csv", Customer.class);
-            System.out.println("Customer details retrieved as: " + customerDetails);
+            System.out.println("Customer details from CSV retrieved as: " + customerDetails);
 
             // POST them to rest endpoint
             String submitCustomerDetailsEndpoint = "http://localhost:8080/customers";

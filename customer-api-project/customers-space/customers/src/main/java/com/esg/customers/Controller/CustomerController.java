@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.esg.customers.Model.Customer;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
+@RequestMapping("/customers")
 public class CustomerController {
 
     private final CustomerService customerService;
@@ -23,7 +25,7 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @GetMapping("/customers")
+    @GetMapping
     public ResponseEntity<List<Customer>> getAllCustomers() {
         List<Customer> customers = customerService.getAllCustomers();
 
@@ -34,18 +36,7 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/customers/{customerRef}")
-    public ResponseEntity<Customer> getCustomerByRef(@PathVariable String customerRef) {
-        Optional<Customer> customer = customerService.getCustomerByRef(customerRef);
-
-        if (customer.isPresent()) {
-            return ResponseEntity.ok(customer.get());
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @PostMapping("/customers")
+    @PostMapping
     public ResponseEntity<List<Customer>> saveCustomers(@RequestBody List<Customer> customerDetails) {
         List<Customer> customers = customerService.saveAllCustomers(customerDetails);
 
@@ -53,6 +44,17 @@ public class CustomerController {
             return ResponseEntity.noContent().build();
         } else {
             return ResponseEntity.ok(customers);
+        }
+    }
+
+    @GetMapping("/{customerRef}")
+    public ResponseEntity<Customer> getCustomerByRef(@PathVariable String customerRef) {
+        Optional<Customer> customer = customerService.getCustomerByRef(customerRef);
+
+        if (customer.isPresent()) {
+            return ResponseEntity.ok(customer.get());
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 

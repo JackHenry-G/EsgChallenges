@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "App",
+      "request": "launch",
+      "mainClass": "com.esg.App",
+      "projectName": "csvreader"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-CustomersApplication<customers>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.esg.customers.CustomersApplication",
+      "projectName": "customers",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}
